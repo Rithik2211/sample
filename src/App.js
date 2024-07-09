@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useRef } from "react";
 function App() {
+  let colorParagraph = useRef(null); // useRef => {current: null}
+  let colors = ['red','blue','green','yellow','pink','orange'];
+  useEffect(()=>{
+    console.log("colorParagraph",colorParagraph);
+  },[]);
+  const handleColor = () => {
+    const randomColor = Math.floor(Math.random() * colors.length);
+    colorParagraph.current.style.color = colors[randomColor]
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <button onClick={()=> handleColor()}>Click Here</button>
+     <h1 ref={colorParagraph}> Hello This is useRef </h1>
     </div>
   );
 }
