@@ -4,7 +4,7 @@ import { utils } from './utils';
 const Demo = () => {
     const [count, setCount] = useState(0);
     const [items] = useState(utils)
-    const seletedItem = useMemo(()=> items.find(item => item.isSelected), [])
+    const seletedItem = useMemo(()=> items.find(item => item.isSelected), [items])
   return (
    <div>
     <h1>{count}</h1>
